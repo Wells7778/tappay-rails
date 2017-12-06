@@ -23,7 +23,7 @@ module TapPay
       end
 
       def request
-        res = send_request('tpc/partner/directpay/paybyprime', to_hash)
+        res = send_request('tpc/payment/pay-by-prime', to_hash)
         Response::PayByPrime.new(JSON.parse(res.body), res)
       end
 

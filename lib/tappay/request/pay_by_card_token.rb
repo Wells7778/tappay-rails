@@ -3,9 +3,9 @@ require 'tappay/response/pay_by_card_token'
 
 module TapPay
   module Request
-    class PayByCardToken < Pay
-      attr_reader :cardkey
-      attr_reader :cardtoken
+    class PayBycard_token < Pay
+      attr_reader :card_key
+      attr_reader :card_token
 
       def initialize(*args)
         super
@@ -13,22 +13,22 @@ module TapPay
 
       def to_hash
         hash = super
-        hash[:cardkey] = @cardkey
-        hash[:cardtoken] = @cardtoken
+        hash[:card_key] = @card_key
+        hash[:card_token] = @card_token
         hash
       end
 
       def request
-        res = send_request('tpc/partner/directpay/paybytoken', to_hash)
-        Response::PayByCardToken.new(JSON.parse(res.body), res)
+        res = send_request('tpc/payment/pay-by-token', to_hash)
+        Response::PayBycard_token.new(JSON.parse(res.body), res)
       end
 
-      def cardkey=(cardkey)
-        @cardkey = cardkey.to_s
+      def card_key=(card_key)
+        @card_key = card_key.to_s
       end
 
-      def cardtoken=(cardtoken)
-        @cardtoken = cardtoken.to_s
+      def card_token=(card_token)
+        @card_token = card_token.to_s
       end
     end
   end

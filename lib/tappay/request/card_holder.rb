@@ -3,33 +3,33 @@ require 'tappay/request/base'
 module TapPay
   module Request
     class CardHolder < Base
-      attr_reader :phonenumber
+      attr_reader :phone_number
       attr_reader :name
       attr_reader :email
-      attr_reader :zip
-      attr_reader :addr
-      attr_reader :nationalid
+      attr_reader :zip_code
+      attr_reader :address
+      attr_reader :national_id
 
       def initialize(*args)
-        @zip = ''
-        @addr = ''
-        @nationalid = ''
+        @zip_code = ''
+        @address = ''
+        @national_id = ''
         super
       end
 
       def to_hash
         {
-          phonenumber: @phonenumber,
+          phone_number: @phone_number,
           name: @name,
           email: @email,
-          zip: @zip,
-          addr: @addr,
-          nationalid: @nationalid
+          zip_code: @zip_code,
+          address: @address,
+          national_id: @national_id
         }
       end
 
-      def phonenumber=(phonenumber)
-        @phonenumber = phonenumber.to_s
+      def phone_number=(phone_number)
+        @phone_number = phone_number.to_s
       end
 
       def name=(name)
@@ -40,16 +40,16 @@ module TapPay
         @email = email.to_s
       end
 
-      def zip=(zip)
-        @zip = zip.to_s
+      def zip_code=(zip_code)
+        @zip_code = zip_code.to_s
       end
 
-      def addr=(addr)
-        @addr = addr.to_s
+      def address=(address)
+        @address = address.to_s
       end
 
-      def nationalid=(nationalid)
-        @nationalid = nationalid.to_s
+      def national_id=(national_id)
+        @national_id = national_id.to_s
       end
     end
   end

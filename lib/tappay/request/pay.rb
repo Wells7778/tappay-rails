@@ -3,53 +3,48 @@ require 'tappay/request/base'
 module TapPay
   module Request
     class Pay < Base
-      attr_reader :vatnumber
-      attr_reader :partnerkey
-      attr_reader :merchantid
+      attr_reader :partner_key
+      attr_reader :merchant_id
 
       attr_reader :amount
       attr_reader :currency
-      attr_reader :ptradeid
-      attr_reader :orderid
+      attr_reader :bank_transaction_id
+      attr_reader :order_number
       attr_reader :details
 
       attr_reader :instalment
-      attr_reader :authtocapperiodinday
+      attr_reader :delay_capture_in_days
 
       def initialize(*args)
         @instalment = 0
-        @merchantid = TapPay.config.merchant_id
-        @vatnumber = TapPay.config.vat_number
-        @partnerkey = TapPay.config.partner_key
+        @delay_capture_in_days = 0
+        @merchant_id = TapPay.config.merchant_id
+        @partner_key = TapPay.config.partner_key
         @currency = TapPay.config.default_currency
         super
       end
 
       def to_hash
-        {
-          vatnumber: @vatnumber,
-          partnerkey: @partnerkey,
-          merchantid: @merchantid,
+        hash = {
+          partner_key: @partner_key,
+          merchant_id: @merchant_id,
           amount: @amount,
           currency: @currency,
-          ptradeid: @ptradeid,
-          orderid: @orderid,
           details: @details,
           instalment: @instalment,
-          authtocapperiodinday: @authtocapperiodinday
+          delay_capture_in_days: @delay_capture_in_days
         }
+        hash[:bank_transaction_id] = @bank_transaction_id if @bank_transaction_id
+        hash[:order_number] = @order_number if @order_number
+        hash
       end
 
-      def vatnumber=(vatnumber)
-        @vatnumber = vatnumber.to_s
+      def partner_key=(partner_key)
+        @partner_key = partner_key.to_s
       end
 
-      def partnerkey=(partnerkey)
-        @partnerkey = partnerkey.to_s
-      end
-
-      def merchantid=(merchantid)
-        @merchantid = merchantid.to_s
+      def merchant_id=(merchant_id)
+        @merchant_id = merchant_id.to_s
       end
 
       def amount=(amount)
@@ -60,12 +55,12 @@ module TapPay
         @currency = currency.to_s
       end
 
-      def ptradeid=(ptradeid)
-        @ptradeid = ptradeid.to_s
+      def bank_transaction_id=(bank_transaction_id)
+        @bank_transaction_id = bank_transaction_id.to_s
       end
 
-      def orderid=(orderid)
-        @orderid = orderid.to_s
+      def order_number=(order_number)
+        @order_number = order_number.to_s
       end
 
       def details=(details)
@@ -76,9 +71,10 @@ module TapPay
         @instalment = instalment.to_i
       end
 
-      def authtocapperiodinday=(authtocapperiodinday)
-        @authtocapperiodinday = authtocapperiodinday.to_i
+      def delay_capture_in_days=(delay_capture_in_days)
+        @delay_capture_in_days = delay_capture_in_days.to_i
       end
+
     end
   end
 end

@@ -4,14 +4,13 @@ require 'tappay/response/card_secret'
 module TapPay
   module Response
     class PayByPrime < Pay
-      attr_reader :cardsecret
+      attr_reader :card_secret
+      attr_reader :payment_url
 
       def initialize(*args)
         super
-        @cardsecret = CardSecret.new(@cardsecret) if @cardsecret
+        @card_secret = CardSecret.new(@card_secret) if @card_secret
       end
-
-      alias card_secret cardsecret
     end
   end
 end

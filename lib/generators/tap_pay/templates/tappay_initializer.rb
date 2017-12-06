@@ -6,7 +6,6 @@ TapPay.configure do |config|
   # VAT Number and Partner Key. This can be found on the "Information" page of
   # TapPay Portal (https://portal.tappaysdk.com/information).
   config.partner_key = 'place_your_partner_key_here'
-  config.vat_number = 'place_your_vat_number_here'
 
   # TapPay App ID and App Key.
   # You can get your ID or create a new app on the "Application" page of

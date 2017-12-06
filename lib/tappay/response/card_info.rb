@@ -58,6 +58,10 @@ module TapPay
             'MasterCard'
           when 3
             'JCB'
+          when 4
+            'Union Pay'
+          when 5
+            'AMEX'
           else
             'Unknown'
           end
@@ -71,23 +75,44 @@ module TapPay
             :master_card
           when 3
             :jcb
+          when 4
+            :union_pay
+          when 5
+            :amex
           else
             :unknown
           end
         end
       end
 
-      attr_reader :bincode
-      attr_reader :lastfour
+      attr_reader :bin_code
+      attr_reader :last_four
       attr_reader :issuer
       attr_reader :funding
       attr_reader :type
-      attr_reader :prime
+      attr_reader :level
+      attr_reader :country
+      attr_reader :country_code
+      attr_reader :expiry_date
 
       def initialize(*args)
         super
         @funding = Funding.new(@funding) if @funding
         @type = Type.new(@type) if @type
+      end
+
+      def to_hash
+        {
+          bin_code: @bin_code,
+          last_four: @last_four,
+          issuer: @issuer,
+          funding: @funding,
+          type: @type,
+          level: @level,
+          country: @country,
+          country_code: @country_code,
+          expiry_date: @expiry_date
+        }
       end
     end
   end
