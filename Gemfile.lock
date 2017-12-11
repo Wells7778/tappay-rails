@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tappay-rails (0.1.0)
+    tappay-rails (0.2.0)
       rails (>= 4.0, < 5.2)
 
 GEM
@@ -54,7 +54,7 @@ GEM
     i18n (0.8.4)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (3.1)
@@ -132,4 +132,4 @@ DEPENDENCIES
   tappay-rails!
 
 BUNDLED WITH
-   1.13.7
+   1.14.4

@@ -3,7 +3,7 @@ require 'tappay/response/pay_by_card_token'
 
 module TapPay
   module Request
-    class PayBycard_token < Pay
+    class PayByCardToken < Pay
       attr_reader :card_key
       attr_reader :card_token
 
@@ -20,7 +20,7 @@ module TapPay
 
       def request
         res = send_request('tpc/payment/pay-by-token', to_hash)
-        Response::PayBycard_token.new(JSON.parse(res.body), res)
+        Response::PayByCardToken.new(JSON.parse(res.body), res)
       end
 
       def card_key=(card_key)
