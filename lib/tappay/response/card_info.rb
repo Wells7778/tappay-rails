@@ -19,6 +19,10 @@ module TapPay
         def respond_to_missing?(name)
           @value.respond_to?(name)
         end
+
+        def value
+          @value
+        end
       end
 
       class Funding < EnumNumber

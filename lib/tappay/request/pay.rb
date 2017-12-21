@@ -15,6 +15,9 @@ module TapPay
       attr_reader :instalment
       attr_reader :delay_capture_in_days
 
+      attr_reader :fraud_id
+      attr_reader :card_ccv
+
       def initialize(*args)
         @instalment = 0
         @delay_capture_in_days = 0
@@ -36,6 +39,8 @@ module TapPay
         }
         hash[:bank_transaction_id] = @bank_transaction_id if @bank_transaction_id
         hash[:order_number] = @order_number if @order_number
+        hash[:fraud_id] = @fraud_id if @fraud_id
+        hash[:card_ccv] = @card_ccv if @card_ccv
         hash
       end
 
@@ -73,6 +78,14 @@ module TapPay
 
       def delay_capture_in_days=(delay_capture_in_days)
         @delay_capture_in_days = delay_capture_in_days.to_i
+      end
+
+      def fraud_id=(fraud_id)
+        @fraud_id = fraud_id.to_s
+      end
+
+      def card_ccv=(card_ccv)
+        @card_ccv = card_ccv.to_s
       end
 
     end
