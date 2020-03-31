@@ -16,7 +16,7 @@ module TapPay
       end
 
       def request_host
-        TapPay.config.server_type == 'production' ? 'https://prod.tappayapis.com' : 'https://sandbox.tappayapis.com'
+        TapPay.config.server_type == 'production' ? 'https://prod.tappaysdk.com' : 'https://sandbox.tappaysdk.com'
       end
 
       def partner_key
