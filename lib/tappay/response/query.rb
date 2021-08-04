@@ -1,5 +1,5 @@
 require 'tappay/response/base'
-require 'tappay/response/pay_by_prime'
+require 'tappay/response/trade_record'
 
 module TapPay
   module Response
@@ -13,7 +13,7 @@ module TapPay
 
       def records
         trade_records.map do |record|
-          PayByPrime.new record
+          TradeRecord.new record
         end
       end
 
