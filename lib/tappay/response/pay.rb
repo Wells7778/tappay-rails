@@ -17,7 +17,7 @@ module TapPay
       attr_reader :bank_transaction_time
       attr_reader :bank_result_code
       attr_reader :bank_result_msg
-      
+      attr_reader :card_identifier
 
       def initialize(*args)
         super

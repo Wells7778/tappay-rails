@@ -9,6 +9,7 @@ module TapPay
       attr_reader :zip_code
       attr_reader :address
       attr_reader :national_id
+      attr_reader :member_id
 
       def initialize(*args)
         @zip_code = ''
@@ -24,8 +25,9 @@ module TapPay
           email: @email,
           zip_code: @zip_code,
           address: @address,
-          national_id: @national_id
-        }
+          national_id: @national_id,
+          member_id: @member_id,
+        }.compact
       end
 
       def phone_number=(phone_number)
@@ -50,6 +52,10 @@ module TapPay
 
       def national_id=(national_id)
         @national_id = national_id.to_s
+      end
+
+      def member_id=(member_id)
+        @member_id = member_id.to_s
       end
     end
   end

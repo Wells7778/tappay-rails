@@ -92,6 +92,7 @@ module TapPay
       attr_reader :bin_code
       attr_reader :last_four
       attr_reader :issuer
+      attr_reader :issuer_zh_tw
       attr_reader :funding
       attr_reader :type
       attr_reader :level
@@ -107,15 +108,16 @@ module TapPay
 
       def to_hash
         {
-          bin_code: @bin_code,
-          last_four: @last_four,
-          issuer: @issuer,
-          funding: @funding,
-          type: @type,
-          level: @level,
-          country: @country,
-          country_code: @country_code,
-          expiry_date: @expiry_date
+          bin_code: bin_code,
+          last_four: last_four,
+          issuer: issuer,
+          issuer_zh_tw: issuer_zh_tw,
+          funding: funding,
+          type: type,
+          level: level,
+          country: country,
+          country_code: country_code,
+          expiry_date: expiry_date,
         }
       end
     end
